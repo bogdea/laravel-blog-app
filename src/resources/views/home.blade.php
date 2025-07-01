@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends("layouts.app")
 
-<head>
-    <meta charset="UTF-8">
-    <title>home</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-</head>
+@section("title", "home")
 
-<body>
-    <h1>hello world</h1>
+@section("content")
+    <div class="w-full">
+        <h2 class="mb-8 text-4xl font-semibold">
+            still think muscle growth comes from
+            <br />
+            microtears?
+        </h2>
 
-    @livewireScripts
-</body>
+        <p class="text-lg">
+            you've been misled. muscle growth isn't about breaking your body
+            <br />
+            every session — it's about progressive overload, proper recovery,
+            <br />
+            and real nutrition.
+        </p>
 
-</html>
+        <p class="my-5 text-lg">
+            no microtears is a science-based fitness blog for people done with
+            bro-science
+            <br />
+            and ready to train smarter.
+        </p>
+
+        <x-cta-button href="/blog">start reading</x-cta-button>
+    </div>
+@endsection
