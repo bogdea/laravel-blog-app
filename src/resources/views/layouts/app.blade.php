@@ -14,6 +14,7 @@
             @yield("content")
         </main>
 
+        <livewire:auth.login-modal />
         @livewireScripts
     </body>
 </html>
