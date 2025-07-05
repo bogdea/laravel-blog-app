@@ -7,6 +7,7 @@ use Livewire\Component;
 class LoginModal extends Component
 {
 public $show = false;
+public $mode = 'signup';
 public $username='';
 public $password='';
 
@@ -19,6 +20,14 @@ public function open() {
 
 public function close() {
     $this-> show = false;
+}
+
+public function switchToSignUp() {
+    $this->mode = 'signup';
+}
+
+public function switchToLogin() {
+    $this->mode = 'login';
 }
 
     public function render()

@@ -7,7 +7,7 @@
     >
         {{-- header --}}
         <h2 class="mb-6 text-center text-xl font-semibold">
-            sign in to your account
+            {{ $mode === "login" ? "sign in to your account" : "create a new account" }}
         </h2>
 
         {{-- form --}}
@@ -39,14 +39,15 @@
                 type="submit"
                 class="inline-block w-full rounded-2xl bg-purple-600 px-4 py-2 font-medium text-white transition hover:bg-purple-700"
             >
-                sign in
+                {{ $mode === "login" ? "sign in" : "sign up" }}
             </button>
         </form>
 
         <span
+            wire:click="{{ $mode === "login" ? "switchToSignUp" : "switchToLogin" }}"
             class="mt-3 inline-block cursor-pointer text-sm text-[#555] transition hover:text-[#444]"
         >
-            don't have an account? sign up
+            {{ $mode === "login" ? "don't have an account? sign up" : "already have an account? sign in" }}
         </span>
     </div>
 </div>
