@@ -11,7 +11,10 @@ public $mode = 'signup';
 public $username='';
 public $password='';
 
-protected $listeners = ['openLoginModal' => 'open'];
+protected $listeners = [
+    'openLoginModal' => 'open',
+    'logout' => 'logout',
+];
 
 
 public function open() {
@@ -28,6 +31,40 @@ public function switchToSignUp() {
 
 public function switchToLogin() {
     $this->mode = 'login';
+}
+
+public function register() {
+    $this->validate([
+        'username' => 'required|min:3|max:16|unique:users,username',
+        'password' => 'required|min:6',
+    ]);
+
+    $user = \App\Models\User::create([
+        'username' => $this->username,
+        'password' => \Hash::make($this->password),
+    ]);
+
+    \Auth::login($user);
+
+    $this->close();
+}
+
+public function login() {
+    $this->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ]);
+
+    if (\Auth::attempt(['username' => $this->username, 'password' => $this->password])) {
+        session()->regenerate();
+        $this->close();
+    }
+}
+
+public function logout() {
+    \Auth::logout();
+    session()->invalidate();
+    session()->regenerateToken();
 }
 
     public function render()

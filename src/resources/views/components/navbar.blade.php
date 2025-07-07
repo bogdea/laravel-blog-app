@@ -2,6 +2,20 @@
     <h1 class="text-2xl font-semibold">no microtears</h1>
     <nav class="flex space-x-6 font-medium">
         <a href="#" class="hover:text-[#555]">blog</a>
-        <button onclick="Livewire.dispatch('openLoginModal')">sign in</button>
+        @auth
+            <a
+                onclick="Livewire.dispatch('logout')"
+                class="cursor-pointer hover:text-[#555]"
+            >
+                log out
+            </a>
+        @else
+            <a
+                onclick="Livewire.dispatch('openLoginModal')"
+                class="cursor-pointer hover:text-[#555]"
+            >
+                log in
+            </a>
+        @endauth
     </nav>
 </header>

@@ -11,7 +11,10 @@
         </h2>
 
         {{-- form --}}
-        <form wire:submit.prevent="submit" class="space-y-3">
+        <form
+            wire:submit.prevent="{{ $mode === "login" ? "login" : "register" }}"
+            class="space-y-3"
+        >
             <div class="mb-2">
                 {{-- username --}}
                 <input
