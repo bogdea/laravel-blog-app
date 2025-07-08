@@ -47,6 +47,8 @@ public function register() {
     \Auth::login($user);
 
     $this->close();
+
+    return redirect('/');
 }
 
 public function login() {
@@ -59,12 +61,15 @@ public function login() {
         session()->regenerate();
         $this->close();
     }
+
+    return redirect('/');
 }
 
 public function logout() {
     \Auth::logout();
     session()->invalidate();
     session()->regenerateToken();
+    return redirect('/');
 }
 
     public function render()

@@ -8,7 +8,7 @@
     </head>
 
     <body class="flex min-h-screen flex-col bg-white text-black">
-        <x-navbar />
+        <livewire:navbar />
 
         <main class="px-15 flex flex-grow items-center">
             @yield("content")
