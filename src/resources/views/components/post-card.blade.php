@@ -5,6 +5,11 @@
         <div class="text-sm text-gray-400">
             {{ $post->published_at->format("M j, Y") }}
         </div>
-        <a href="#" class="inline-block font-medium text-purple-600">read</a>
+        <a
+            href="{{ route("post.show", $post->id) }}"
+            class="inline-block font-medium text-purple-600"
+        >
+            read
+        </a>
     </div>
 </div>

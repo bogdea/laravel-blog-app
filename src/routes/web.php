@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/post/{id}', [PostController::class, 'show']) ->name(('post.show'));
