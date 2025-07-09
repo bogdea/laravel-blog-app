@@ -20,6 +20,12 @@ public function index()
 
     public function show($id) {
         $post = Post::findOrFail($id);
-        return view('post.show', compact('post'));
+
+        $recentPosts = Post::orderByDesc('published_at')
+        ->where('id', '!=', $id)
+        ->take(5)
+        ->get();
+
+        return view('post.show', compact('post', 'recentPosts'));
     }
 }
