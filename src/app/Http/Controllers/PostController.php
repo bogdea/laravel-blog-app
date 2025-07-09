@@ -6,11 +6,17 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index()
-    {
-        $posts = Post::orderByDesc('published_at')->get();
-        return view('blog', compact('posts'));
-    }
+public function index()
+{
+    $posts = Post::orderByDesc('published_at')->get();
+
+    $recentComments = \App\Models\Comment::with('post', 'user')
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return view('blog', compact('posts', 'recentComments'));
+}
 
     public function show($id) {
         $post = Post::findOrFail($id);
