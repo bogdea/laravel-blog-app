@@ -22,7 +22,7 @@
                             href="{{ route("post.show", $comment->post->id) }}"
                             class="text-blue-500"
                         >
-                            {{ $comment->post->title }}
+                            {{ Str::limit($comment->post->title, 30) }}
                         </a>
                     </p>
                     <p class="text-gray-700">
