@@ -3,8 +3,8 @@
 @section("title", "blog")
 
 @section("content")
-    <div class="flex w-full justify-between py-12">
-        <div class="flex-1 space-y-9">
+    <div class="gap-30 flex w-full justify-between py-12">
+        <div class="w-2/3 space-y-9">
             @foreach ($posts as $post)
                 <x-post-card :post="$post" />
             @endforeach
